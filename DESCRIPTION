@@ -1,15 +1,45 @@
 Package: mRclwhip
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
-Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Type: Package
+Title: Whippin' Data Into Shape at Mayo Clinic
+Version: 0.1.1
+Authors@R: as.person(c(
+    "Pat Johnson <Johnson.Patrick3@mayo.edu> [aut, cre]", 
+    "Matt Spiegel <Spiegel.Matthew@mayo.edu> [aut]"
+  ))
+Description: Quickly manipulate data and prepare publication-ready tables.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Suggests: 
-    testthat
+VignetteBuilder:
+  knitr
+Depends: 
+    R (>= 2.10)
+Suggests:
+    knitr,
+    testthat (>= 2.1.0),
+    pROC,
+    rmarkdown
+Imports:
+    fs,
+    magrittr,
+    broom,
+    Hmisc,
+    dplyr,
+    forcats,
+    glue,
+    officer,
+    rstudioapi,
+    scales,
+    stringr,
+    arsenal,
+    flextable,
+    tibble,
+    rlang (>= 0.1.2),
+    purrr,
+    survival,
+    tidyr,
+    utils,
+    stats,
+    lubridate,
+    usethis
+RoxygenNote: 6.1.1

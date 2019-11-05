@@ -1,0 +1,54 @@
+reference:
+- title: Format Output
+  desc:  Format data frames as a flextable for reporting
+  contents:
+  - format_flextable
+  - format_tableby
+  - format_modelsum
+  - format_pbold
+  - add_footer
+  - add_table
+- title: Format Contents
+  desc: Additional functions to help format data frames, strings, and vectors for reports
+  contents:
+  - move_to_first
+  - move_to_last
+  - sort_by_label
+  - add_total_column
+  - format_p
+  - str_to_firstup
+  - unfill_vec
+  - countpct
+  - nrange
+  - split_nrange
+  - percent_to_numeric
+  - in_row_headers
+- title: Project Management
+  desc:  Helpful function to set up and maintain a new project
+  contents:
+  - new_project
+  - knitthis
+  - clean_wd
+  - rm_all
+- title: Other
+  desc: Other helpful functions
+  contents:
+  - missing_tbl
+  - all_identical
+  - all_unique
+  - coalesce_rows
+  - calc_age
+  - surv_time
+  - non_na
+  - vec_to_regex
+  - label_df
+- title: Models
+  desc: Additional model outputs
+  contents:
+  - modelsum_cox
+  - modelsum_km
+- title: Data
+  desc: Constants built into Pmisc
+  contents:
+   - days
+   - days.abb

@@ -1,0 +1,66 @@
+---
+title: "Formatting Output"
+output: 
+  rmarkdown::html_vignette:
+    toc: true 
+    toc_depth: 3
+vignette: >
+  %\VignetteIndexEntry{Format output}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r echo = FALSE}
+knitr::opts_chunk$set(
+  message = FALSE,
+  collapse = TRUE,
+  comment = "#>")
+```
+
+
+```{r warning=FALSE, echo=FALSE, message=FALSE}
+library(mRclwhip)
+library(dplyr)
+library(arsenal)
+```
+
+### Formatting a data table
+
+```{r}
+# Create a data set
+dt <- mtcars[1:5, 1:6] %>% 
+  tibble::rownames_to_column(var = "Model") %>% 
+  mutate_if(is.numeric, scales::number)
+
+format_flextable(dt)
+```
+
+
+### Formatting a tableby object
+
+```{r}
+tableby(arm ~ age + sex + race + bmi + fu.stat, data = mockstudy) %>%  
+  format_tableby() %>% 
+  add_footer("P values arise from linear models for continuous variables and Pearson's chi-squared test for categorical")
+```
+
+
+### Formatting a modelsum object
+
+```{r warning=F, message=FALSE}
+modelsum(mdquality.s ~ age + bmi, data=mockstudy, adjust=~sex, family=binomial, show.adjust = F, show.intercept = F) %>%
+  format_modelsum() %>% 
+  add_footer("P values from logistic regression adjusting for sex.")
+```
+
+### Adding a second header row
+
+```{r}
+second_header <- list(values = c("", "Group 1", "Group 2"), colwidths = c(1,3,3))
+
+dt %>% 
+  format_flextable(header2 = second_header, bold_header = F)
+```
+
+
+

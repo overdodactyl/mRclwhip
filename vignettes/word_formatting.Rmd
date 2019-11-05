@@ -1,0 +1,80 @@
+---
+title: "Word Formatting"
+output: 
+  rmarkdown::html_vignette:
+    toc: true 
+    toc_depth: 3
+vignette: >
+  %\VignetteIndexEntry{Word Formatting}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Macros
+
+[Create or run a macro](https://support.office.com/en-us/article/create-or-run-a-macro-c6b99036-905c-49a6-818a-dfb98b7c3c9c)
+
+## Tables
+
+Create a macro to help standardize the look of tables outside of what can be done by `R`. 
+
+```{sass eval = F}
+Sub FormatTables()
+  If ActiveDocument.Tables.Count > 0 Then
+    Dim objTable As Object
+
+    Application.Browser.Target = wdBrowseTable
+    For Each objTable In ActiveDocument.Tables
+      objTable.AutoFitBehavior (wdAutoFitWindow)
+    Next
+  End If
+End Sub
+```
+
+
+## Put every table on it's own page
+
+
+```{sass eval = F}
+Sub PagePerTable()
+'
+' PagePerTable Macro
+'
+'
+ 
+For Each Tbl In ActiveDocument.Tables
+    Set myRange = Tbl.Range
+    With myRange
+        .Collapse Direction:=wdCollapseEnd
+        .InsertBreak Type:=wdPageBreak
+    End With
+    Next
+ 
+End Sub
+```
+
+## Figures
+
+This macro reduces the size of all figures in an active document to 45% of its original size.
+
+```{sass eval = F}
+Sub FormatFigures()
+
+Dim shp As InlineShape
+
+For Each shp In ActiveDocument.InlineShapes
+    shp.ScaleHeight = 45
+    shp.ScaleWidth = 45
+Next
+
+End Sub
+```
+
+
