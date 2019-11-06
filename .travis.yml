@@ -1,5 +1,5 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
-# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+
 language: R
 sudo: false
 cache: packages
@@ -10,5 +10,3 @@ matrix:
   - r: release
   - r: oldrel
   - r: 3.4
-  - r: 3.3
-  - r: 3.2
