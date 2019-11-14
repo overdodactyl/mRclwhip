@@ -7,3 +7,4 @@
 ^data-raw$
 ^README\.Rmd$
 ^\.travis\.yml$
+^_config\.yml$
