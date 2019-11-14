@@ -4,7 +4,10 @@
 \name{mRclwhip}
 \alias{mRclwhip}
 \alias{mRclwhip-package}
-\title{\code{mRclwhip} package}
+\title{Whippin' Data Into Shape at Mayo Clinic}
 \description{
+Quickly manipulate data and prepare publication-ready tables.
+}
+\details{
 \code{mRclwhip} package
 }

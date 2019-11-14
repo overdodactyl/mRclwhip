@@ -1,3 +1,7 @@
+#' Whippin' Data Into Shape at Mayo Clinic
+#'
+#' Quickly manipulate data and prepare publication-ready tables.
+#'
 #' \code{mRclwhip} package
 #'
 #'
