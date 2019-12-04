@@ -49,6 +49,7 @@ format_flextable <- function(data, center_cols = NULL, left_cols = NULL, right_c
     flextable::hline_bottom(border = border, part = "all") %>%
     flextable::padding(padding.top = 0, part = "all") %>%
     flextable::padding(padding.bottom = 0, part = "all") %>%
+    flextable::padding(padding.left = 5, j = 1, part = "header") %>%
     flextable::valign(part = "header") %>%
     flextable::align(j = 1, part = "all") %>%
     flextable::align(j = 2:last_col, part = "all", align = "center") %>%
