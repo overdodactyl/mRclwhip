@@ -24,6 +24,13 @@ modelsum_km <- function(event, time, data = NA, times = 1:3, freedom.from = "dea
 
     surv.fit <- survival::survfit(surv.form, data = data)
 
+    if (is.null(var)) {
+      sum <- summary(surv.fit)
+      events <- as.numeric(sum$table[4])
+    } else {
+      sum <- summary(surv.fit)
+      events <- as.numeric(sum$table[,4])
+    }
 
     p.val <- tryCatch({
       surv.diff <- survival::survdiff(surv.form, data = data)
@@ -48,7 +55,7 @@ modelsum_km <- function(event, time, data = NA, times = 1:3, freedom.from = "dea
       ) %>%
       dplyr::group_by(.data$strata) %>%
       dplyr::mutate(
-        event = sum(.data$n.event) %>% scales::comma(),
+        # event = events %>% scales::comma(), #sum(.data$n.event) %>% scales::comma(),
         time = factor(.data$time),
         time = forcats::fct_reorder(.data$time, .data$time_n)
       ) %>%
@@ -56,11 +63,14 @@ modelsum_km <- function(event, time, data = NA, times = 1:3, freedom.from = "dea
       dplyr::select(
         Level = .data$strata,
         Total = .data$strata_size,
-        Event = .data$event,
+        # Event = .data$event,
         .data$time,
         .data$HR
       ) %>%
-      tidyr::spread(.data$time, .data$HR)
+      tidyr::spread(.data$time, .data$HR) %>%
+      mutate(Event = events %>% scales::comma()) %>%
+      dplyr::select(1, 2, `Total Events` = Event, dplyr::everything()
+      )
 
     res$Level <- unfill_vec(res$Level)
 

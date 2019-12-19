@@ -37,6 +37,7 @@ format_p <- function(pval, na_string = "-", empty_string = "-", sig = NA) {
   }
 
   if (p < 0.001) res <- "<0.001"
+  if (p == 1) res <- "1.00"
   # else if (!is.na(sig) & scales::pvalue(p, accuracy = .001) < sig ) res <- scales::pvalue(p, accuracy = .0001)
   else if (p < 0.1) res <- scales::pvalue(p, accuracy = .001)
   else res <- scales::pvalue(p, accuracy = .01)

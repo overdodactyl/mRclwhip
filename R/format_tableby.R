@@ -32,9 +32,9 @@ format_tableby <- function(tbl, bold_var = T, bold_p = T, pvals = "p value", ...
     }
   }
 
-  if ("p value" %in% names(tmp)) {
-    tmp <- mutate(tmp, `p value` = format_p(.data$`p value`, na_string = "", empty_string = ""))
-  }
+  # if ("p value" %in% names(tmp)) {
+  #   tmp <- mutate(tmp, `p value` = format_p(.data$`p value`, na_string = "", empty_string = ""))
+  # }
 
   indent_cols <- which(startsWith(tmp$Label, "- "))
 
