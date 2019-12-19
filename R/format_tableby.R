@@ -11,7 +11,7 @@
 #' tableby(arm ~ ., data = mockstudy, digits = 2) %>% format_tableby()
 #' }
 #'
-format_tableby <- function(tbl, bold_var = T, bold_p = T, pvals = "p value", ...) {
+format_tableby <- function(tbl, bold_var = FALSE, bold_p = T, pvals = "p value", ...) {
   if (!is.data.frame(tbl)) {
     tmp <- tbl %>%
       summary(text = T) %>%

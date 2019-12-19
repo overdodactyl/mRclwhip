@@ -12,7 +12,7 @@
 #' @param psig A numeric threshold to bold p-values#' @param psig A numeric threshold to bold p-values
 
 format_flextable <- function(data, center_cols = NULL, left_cols = NULL, right_cols = NULL,
-                             header1 = NULL, header2 = NULL, bold_header = TRUE,
+                             header1 = NULL, header2 = NULL, bold_header = FALSE,
                              center_num = TRUE, fontsize = 10, fontname = "Times New Roman",
                              pbold = NA, psig = 0.05) {
 
