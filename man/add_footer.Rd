@@ -4,8 +4,12 @@
 \alias{add_footer}
 \title{Add a formatted footer to a flextable}
 \usage{
-add_footer(ft, text = "Sample footnote", fontsize = 10,
-  fontname = "Times New Roman")
+add_footer(
+  ft,
+  text = "Sample footnote",
+  fontsize = 10,
+  fontname = "Times New Roman"
+)
 }
 \arguments{
 \item{ft}{A flextable object}

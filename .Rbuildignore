@@ -8,3 +8,4 @@
 ^README\.Rmd$
 ^\.travis\.yml$
 ^_config\.yml$
+^sessionInfoLog$

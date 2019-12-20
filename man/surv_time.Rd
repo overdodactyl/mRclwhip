@@ -4,8 +4,15 @@
 \alias{surv_time}
 \title{Calculate time variable for survival analysis}
 \usage{
-surv_time(.data, start_time, event, event_date, fu_date,
-  surv_time = "surv_time", surv_end_time = "surv_end_time")
+surv_time(
+  .data,
+  start_time,
+  event,
+  event_date,
+  fu_date,
+  surv_time = "surv_time",
+  surv_end_time = "surv_end_time"
+)
 }
 \arguments{
 \item{.data}{A tbl}

@@ -69,7 +69,7 @@ modelsum_km <- function(event, time, data = NA, times = 1:3, freedom.from = "dea
       ) %>%
       tidyr::spread(.data$time, .data$HR) %>%
       mutate(Event = events %>% scales::comma()) %>%
-      dplyr::select(1, 2, `Total Events` = Event, dplyr::everything()
+      dplyr::select(1, 2, `Total Events` = .data$Event, dplyr::everything()
       )
 
     res$Level <- unfill_vec(res$Level)

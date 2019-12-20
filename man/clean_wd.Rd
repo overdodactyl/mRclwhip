@@ -4,8 +4,11 @@
 \alias{clean_wd}
 \title{Move all html, pdf, and docx files to an output directory}
 \usage{
-clean_wd(input_dir = ".", output_dir = "./documents/",
-  file_ext = c("docx", "html", "pdf"))
+clean_wd(
+  input_dir = ".",
+  output_dir = "./documents/",
+  file_ext = c("docx", "html", "pdf")
+)
 }
 \arguments{
 \item{input_dir}{Path of directory to clean}

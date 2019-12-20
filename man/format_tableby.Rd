@@ -4,7 +4,7 @@
 \alias{format_tableby}
 \title{Generate a formatted flextable from a tableby object}
 \usage{
-format_tableby(tbl, bold_var = T, bold_p = T, pvals = "p value", ...)
+format_tableby(tbl, bold_var = FALSE, bold_p = T, pvals = "p value", ...)
 }
 \arguments{
 \item{tbl}{A tableby object}

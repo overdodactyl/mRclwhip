@@ -4,8 +4,16 @@
 \alias{nrange}
 \title{Summarize three columns as N (low, high)}
 \usage{
-nrange(.data, n, low, high, accuracy = 0.01, name = "Estimate",
-  remove = TRUE, big.mark = ",")
+nrange(
+  .data,
+  n,
+  low,
+  high,
+  accuracy = 0.01,
+  name = "Estimate",
+  remove = TRUE,
+  big.mark = ","
+)
 }
 \arguments{
 \item{.data}{A tbl.}

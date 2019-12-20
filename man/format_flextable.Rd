@@ -4,10 +4,20 @@
 \alias{format_flextable}
 \title{Standard options used to format a flextable}
 \usage{
-format_flextable(data, center_cols = NULL, left_cols = NULL,
-  right_cols = NULL, header1 = NULL, header2 = NULL,
-  bold_header = TRUE, center_num = TRUE, fontsize = 10,
-  fontname = "Times New Roman", pbold = NA, psig = 0.05)
+format_flextable(
+  data,
+  center_cols = NULL,
+  left_cols = NULL,
+  right_cols = NULL,
+  header1 = NULL,
+  header2 = NULL,
+  bold_header = FALSE,
+  center_num = TRUE,
+  fontsize = 10,
+  fontname = "Times New Roman",
+  pbold = NA,
+  psig = 0.05
+)
 }
 \arguments{
 \item{data}{A `data frame` or `flextable` object}

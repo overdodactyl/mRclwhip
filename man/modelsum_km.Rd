@@ -4,8 +4,14 @@
 \alias{modelsum_km}
 \title{Kaplan-Meier Table}
 \usage{
-modelsum_km(event, time, data = NA, times = 1:3,
-  freedom.from = "death", pval = T)
+modelsum_km(
+  event,
+  time,
+  data = NA,
+  times = 1:3,
+  freedom.from = "death",
+  pval = T
+)
 }
 \arguments{
 \item{event}{Name of event column}
