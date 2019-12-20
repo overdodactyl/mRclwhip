@@ -36,14 +36,16 @@ format_p <- function(pval, na_string = "-", empty_string = "-", sig = NA) {
     }
   }
 
-  if (p > 1) {
+  if (p > 1 ) {
     usethis::ui_stop("P-value greater than one.")
   }
 
   if (p < 0.001) res <- "<0.001"
   else if (p > .99) {
     res <- "1.00"
-    usethis::ui_warn("P-value of {usethis::ui_value(p)} rounded to 1.00")
+    if (p != 1) {
+      usethis::ui_warn("P-value of {usethis::ui_value(p)} rounded to 1.00")
+    }
   }
   else if (p < 0.1) res <- scales::pvalue(p, accuracy = .001)
   else res <- scales::pvalue(p, accuracy = .01)

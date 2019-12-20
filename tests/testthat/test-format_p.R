@@ -4,6 +4,13 @@ test_that("numeric values", {
   expect_equal(format_p(.34567), "0.35")
 })
 
+test_that("p values close to 1", {
+  expect_equal(suppressWarnings(format_p(.991)), "1.00")
+  expect_equal(format_p(1), "1.00")
+  expect_warning(format_p(.998), "rounded")
+  # expect_equal(format_p(1), "0.35")
+})
+
 test_that("characters", {
   expect_equal(format_p("<0.001"), "<0.001")
   expect_equal(format_p("< 0.001"), "<0.001")
