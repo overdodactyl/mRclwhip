@@ -12,8 +12,7 @@ nrange(
   accuracy = 0.01,
   name = "Estimate",
   formatter = c("comma", "percent", "number"),
-  remove = TRUE,
-  ...
+  remove = TRUE
 )
 }
 \arguments{

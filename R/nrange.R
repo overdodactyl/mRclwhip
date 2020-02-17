@@ -8,7 +8,7 @@
 #' @param name Name of new column.
 #' @param remove If TRUE, remove input columns from output data frame.
 #' @param formatter scales function used to format text
-#' @importFrom scales percent number comma
+
 #' @return An object of the same class as .data.
 #' @examples
 #' df <- tibble::tribble(
@@ -21,22 +21,25 @@
 #' @export
 
 nrange <- function(.data, n, low, high, accuracy = 0.01, name = "Estimate",
-                   formatter = c("comma", "percent", "number") , remove = TRUE, ...) {
+                   formatter = c("comma", "percent", "number") , remove = TRUE) {
+
+  if (!"scales" %in% loadedNamespaces())
+    attachNamespace("scales")
 
   formatter <- match.arg(formatter)
   format_func <- match.fun(formatter)
 
-  n <- enquo(n)
-  low <- enquo(low)
-  high <- enquo(high)
-
   res <- .data %>%
-    mutate_at(vars(!!n, !!low, !!high), list(~ format_func(., accuracy, ...))) %>%
-    mutate(!!name := paste0(!!n, " (", !!low, ", ", !!high, ")"))
+    mutate_at(vars({{n}}, {{low}}, {{high}}), list(~ format_func(., accuracy = accuracy))) %>%
+    mutate({{name}} := paste0({{n}}, " (", {{low}}, ", ", {{high}}, ")"))
 
   if (remove) {
-    res <- select(res, -!!n, -!!low, -!!high)
+    res <- select(res, -{{n}}, -{{low}}, -{{high}})
   }
 
   res
 }
+
+##' @importFrom scales comma
+##' @export
+NULL
