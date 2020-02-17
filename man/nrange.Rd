@@ -11,8 +11,9 @@ nrange(
   high,
   accuracy = 0.01,
   name = "Estimate",
+  formatter = c("comma", "percent", "number"),
   remove = TRUE,
-  big.mark = ","
+  ...
 )
 }
 \arguments{
@@ -24,9 +25,9 @@ nrange(
 
 \item{name}{Name of new column.}
 
-\item{remove}{If TRUE, remove input columns from output data frame.}
+\item{formatter}{scales function used to format text}
 
-\item{big.mark}{Character used between every 3 digits to separate thousands.}
+\item{remove}{If TRUE, remove input columns from output data frame.}
 }
 \value{
 An object of the same class as .data.

@@ -7,7 +7,8 @@
 #' @param accuracy Number to round to, NULL for automatic guess.
 #' @param name Name of new column.
 #' @param remove If TRUE, remove input columns from output data frame.
-#' @param big.mark Character used between every 3 digits to separate thousands.
+#' @param formatter scales function used to format text
+#' @importFrom scales percent number comma
 #' @return An object of the same class as .data.
 #' @examples
 #' df <- tibble::tribble(
@@ -19,13 +20,18 @@
 #' df %>% nrange(n, low, high)
 #' @export
 
-nrange <- function(.data, n, low, high, accuracy = 0.01, name = "Estimate", remove = TRUE, big.mark = ",") {
+nrange <- function(.data, n, low, high, accuracy = 0.01, name = "Estimate",
+                   formatter = c("comma", "percent", "number") , remove = TRUE, ...) {
+
+  formatter <- match.arg(formatter)
+  format_func <- match.fun(formatter)
+
   n <- enquo(n)
   low <- enquo(low)
   high <- enquo(high)
 
   res <- .data %>%
-    mutate_at(vars(!!n, !!low, !!high), list(~ scales::comma(., accuracy, big.mark = big.mark))) %>%
+    mutate_at(vars(!!n, !!low, !!high), list(~ format_func(., accuracy, ...))) %>%
     mutate(!!name := paste0(!!n, " (", !!low, ", ", !!high, ")"))
 
   if (remove) {
