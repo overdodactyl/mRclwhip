@@ -8,6 +8,7 @@
 #' @param name Name of new column.
 #' @param remove If TRUE, remove input columns from output data frame.
 #' @param formatter scales function used to format text
+#' @param big.mark Character used between every 3 digits to separate thousands.
 
 #' @return An object of the same class as .data.
 #' @examples
@@ -21,16 +22,20 @@
 #' @export
 
 nrange <- function(.data, n, low, high, accuracy = 0.01, name = "Estimate",
-                   formatter = c("comma", "percent", "number") , remove = TRUE) {
+                   formatter = c("comma", "percent", "number") , remove = TRUE, big.mark = ",") {
 
   if (!"scales" %in% loadedNamespaces())
     attachNamespace("scales")
+
+  comma <- function(...) {scales::comma(...)}
+  percent <- function(...) {scales::percent(...)}
+  number <- function(...) {scales::number(...)}
 
   formatter <- match.arg(formatter)
   format_func <- match.fun(formatter)
 
   res <- .data %>%
-    mutate_at(vars({{n}}, {{low}}, {{high}}), list(~ format_func(., accuracy = accuracy))) %>%
+    mutate_at(vars({{n}}, {{low}}, {{high}}), list(~ format_func(., accuracy = accuracy, big.mark = big.mark))) %>%
     mutate({{name}} := paste0({{n}}, " (", {{low}}, ", ", {{high}}, ")"))
 
   if (remove) {

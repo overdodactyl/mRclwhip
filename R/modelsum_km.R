@@ -51,7 +51,7 @@ modelsum_km <- function(event, time, data = NA, times = 1:3, freedom.from = "dea
         time = paste0(.data$time, "-year freedom from ", freedom.from),
         strata = stringr::str_replace_all(.data$strata, "eval\\(as.name\\(var\\)\\)=", ""),
         strata = stringr::str_to_title(.data$strata),
-        strata_size = scales::comma(.data$strata_size)
+        strata_size = scales::comma(.data$strata_size, accuracy = 1)
       ) %>%
       dplyr::group_by(.data$strata) %>%
       dplyr::mutate(
@@ -68,7 +68,7 @@ modelsum_km <- function(event, time, data = NA, times = 1:3, freedom.from = "dea
         .data$HR
       ) %>%
       tidyr::spread(.data$time, .data$HR) %>%
-      mutate(Event = events %>% scales::comma()) %>%
+      mutate(Event = events %>% scales::comma(accuracy = 1)) %>%
       dplyr::select(1, 2, `Total Events` = .data$Event, dplyr::everything()
       )
 
