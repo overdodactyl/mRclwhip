@@ -1,0 +1,152 @@
+---
+title: A quick demonstration of ```mRclwhip::polish()```
+output: rmarkdown::html_vignette
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.width = 8, fig.height = 4, dpi = 600)
+library(tidyverse)
+library(officedown)
+library(arsenal)
+library(survival)
+source("../R/polish.R")
+```
+
+The idea behind ```mRclwhip::polish()``` is to create a more 'complete product' than what is returned
+from ```broom::tidy()```, for example.  
+
+<br> <br>
+
+The function can either return a ```flextable::flextable()``` object if the argument
+```.flextable = TRUE```. 
+<br>
+Or, if the argument ```.flextable = FALSE```, then a list with two objects is returned where the first
+object in the list is a dataframe of the polished results that can be further manipulated.  
+<br>
+The second object in the list is a vector of row numbers that can then be passed into
+```flextable::padding()``` (after passing the dataframe into ```mRclwhip::format_flextable()``` of course)
+to pad the rows with factor levels.  
+<br>
+The example at the end will provide further clarification.
+
+
+### Example using ```coxph()```
+```{r}
+coxph_res <- coxph(Surv(fu.time, fu.stat) ~ race + sex + bmi, data = mockstudy)
+
+Hmisc::label(mockstudy$sex) <- "Gender"
+
+coxph_res %>%
+  polish(
+    .header1 = list(values = c("", "HR (95% CI)")),
+    exponentiate = T
+  )
+```
+  
+
+### Example using ```lm()```
+```{r}
+mtcars <- mtcars %>%
+  mutate_at(vars(gear, am, carb), as.character)
+
+mtcars <- Hmisc::upData(
+  mtcars,
+  labels = c(mpg = "MPG",
+             hp = "HP",
+             gear = "# of gears",
+             am = "Automatic",
+             wt = "Weight",
+             carb = "Carb"
+             ),
+  print = F
+  )
+
+lm_res <- lm(mpg ~ hp + gear + am + wt + carb, data = mtcars)
+
+lm_res %>%
+  polish(
+    .header1 = list(values = c("", "Estimate (95% CI)"))
+  )
+```
+  
+
+### Example using ```lm()``` with labels argument used correctly
+```{r}
+mtcars <- mtcars %>%
+  mutate_at(vars(gear, am, carb), as.character)
+
+labs <- c(hp = "HP",
+          gear = "# of gears",
+          am = "Automatic",
+          wt = "Weight",
+          carb = "Carb"
+          )
+
+lm_res <- lm(mpg ~ hp + gear + am + wt + carb, data = mtcars)
+
+lm_res %>%
+  polish(
+    .header1 = list(values = c("", "Estimate (95% CI)")),
+    .labels = labs
+  )
+```
+  
+
+### Example using ```lm()``` with labels argument used incorrectly
+```{r, error = T}
+mtcars <- mtcars %>%
+  mutate_at(vars(gear, am, carb), as.character)
+
+labs <- c(mpg = "MPG",
+          hp = "HP",
+          gear = "# of gears",
+          am = "Automatic",
+          wt = "Weight",
+          carb = "Carb"
+)
+
+lm_res <- lm(mpg ~ hp + gear + am + wt + carb, data = mtcars)
+
+lm_res %>%
+  polish(
+    .header1 = list(values = c("", "Estimate (95% CI)")),
+    .labels = labs
+  )
+```
+  
+
+### Example using ```.flextable = FALSE``` where a list with a dataframe and a vector of row numbers is returned
+```{r}
+mtcars <- mtcars %>%
+  mutate_at(vars(gear, am, carb), as.character)
+
+mtcars <- Hmisc::upData(
+  mtcars,
+  labels = c(mpg = "MPG",
+             hp = "HP",
+             gear = "# of gears",
+             am = "Automatic",
+             wt = "Weight",
+             carb = "Carb"
+             ),
+  print = F
+  )
+
+lm_res <- lm(mpg ~ hp + gear + am + wt + carb, data = mtcars)
+
+res <- lm_res %>%
+  polish(
+    .flextable = FALSE
+  )
+
+res
+```
+  
+
+Returning the dataframe allows further manipulation if desired. The row numbers returned for the
+rows with factor levels can then be used in ```flextable::padding()``` to add padding
+```{r}
+res[[1]] %>% 
+  mRclwhip::format_flextable(header1 = list(values = c("", "Estimate (95% CI)"))) %>% 
+  flextable::padding(i = res[[2]], j = 1, padding.left = 25)
+```
