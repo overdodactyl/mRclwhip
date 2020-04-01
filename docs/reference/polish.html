@@ -34,6 +34,7 @@
 
 
 <meta property="og:title" content="Tidy and put the finishing touches on a model output — polish" />
+<meta property="og:description" content="Wrapper around broom::tidy() with some additional finishing touches!" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -122,6 +123,7 @@
     </div>
 
     <div class="ref-description">
+    <p>Wrapper around <code><a href='https://www.rdocumentation.org/packages/broom/topics/reexports'>broom::tidy()</a></code> with some additional finishing touches!</p>
     </div>
 
     <pre class="usage"><span class='fu'>polish</span>(
@@ -139,7 +141,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A model object to be converted into a tibble::tibble()</p></td>
+      <td><p>A model object to be converted into a <code><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble::tibble()</a></code></p></td>
     </tr>
     <tr>
       <th>.labels</th>
@@ -147,20 +149,45 @@
     </tr>
     <tr>
       <th>.conf_int</th>
-      <td><p>Logical to return a 95<!-- % confidence interval} --></p>
-<p>.flextableLogical to return a formatted flextable object if TRUE or a list of a dataframe and row numbers to use in flextable::padding()</p>
-<p>.header1See ??mRclwhip::format_flextable for details</p>
-<p>.header2See ??mRclwhip::format_flextable for details</p>
-<p>...additional arguments passed to broom::tidy()</p></td>
+      <td><p>Logical to return a 95 percent confidence interval</p></td>
+    </tr>
+    <tr>
+      <th>.flextable</th>
+      <td><p>Logical to return a formatted flextable object if TRUE or a list of a dataframe and row numbers to use in <code><a href='https://www.rdocumentation.org/packages/flextable/topics/padding'>flextable::padding()</a></code></p></td>
+    </tr>
+    <tr>
+      <th>.header1</th>
+      <td><p>See <code>??mRclwhip::format_flextable</code> for details</p></td>
+    </tr>
+    <tr>
+      <th>.header2</th>
+      <td><p>See <code>??mRclwhip::format_flextable</code> for details</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>additional arguments passed to <code><a href='https://www.rdocumentation.org/packages/broom/topics/reexports'>broom::tidy()</a></code></p></td>
     </tr>
     </table>
 
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span>(
+  <span class='kw'>id</span> <span class='kw'>=</span> <span class='no'>letters</span>,
+  <span class='kw'>age</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sample'>sample</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/seq'>seq</a></span>(<span class='fl'>18</span>, <span class='fl'>39</span>, <span class='fl'>1</span>), <span class='fl'>26</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='no'>T</span>),
+  <span class='kw'>mile_time</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sample'>sample</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/seq'>seq</a></span>(<span class='fl'>6</span>, <span class='fl'>7.5</span>, <span class='fl'>0.1</span>), <span class='fl'>26</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='no'>T</span>),
+  <span class='kw'>gender</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sample'>sample</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Male"</span>, <span class='st'>"Female"</span>), <span class='fl'>26</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='no'>T</span>),
+  <span class='kw'>country</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sample'>sample</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"USA"</span>, <span class='st'>"Canada"</span>, <span class='st'>"Africa"</span>, <span class='st'>"England"</span>), <span class='fl'>26</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='no'>T</span>)
+)
+
+<span class='no'>lm_res</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>lm</a></span>(<span class='no'>mile_time</span> ~ <span class='no'>age</span> + <span class='no'>gender</span> + <span class='no'>country</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>df</span>)
+
+<span class='no'>lm_res</span> <span class='kw'>%&gt;%</span> <span class='fu'>polish</span>(<span class='kw'>.labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>age</span> <span class='kw'>=</span> <span class='st'>"Age"</span>, <span class='kw'>gender</span> <span class='kw'>=</span> <span class='st'>"Gender"</span>, <span class='kw'>country</span> <span class='kw'>=</span> <span class='st'>"Country of origin"</span>), <span class='kw'>.header1</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>values</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>""</span>, <span class='st'>"Estimate (95% CI)"</span>)))</div><div class='output co'>#&gt; <span class='error'>Error in UseMethod("tbl_vars"): no applicable method for 'tbl_vars' applied to an object of class "function"</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
