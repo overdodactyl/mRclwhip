@@ -5,11 +5,11 @@
 #' @param perc A logical indicating whether or not to format the value with a percent symbol
 #' @export
 #' @examples
-#' tibble(
+#' tibble::tibble(
 #'  start = seq(0.1, 1.1, 0.1),
 #'  final = sample(seq(0.1, 1, 0.1), 11, replace = T)
 #'  ) %>%
-#' mutate(pct_diff = pct_change(start, final))
+#' dplyr::mutate(pct_diff = pct_change(start, final))
 
 
 pct_change <- function(start, final, perc = FALSE) {

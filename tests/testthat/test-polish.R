@@ -1,7 +1,9 @@
 test_that("No errors produced from using polish", {
-  coxph_res <- survival::coxph(survival::Surv(fu.time, fu.stat) ~ race + sex + bmi, data = mockstudy)
+  df1 <- arsenal::mockstudy
 
-  Hmisc::label(mockstudy$sex) <- "Gender"
+  coxph_res <- survival::coxph(survival::Surv(fu.time, fu.stat) ~ race + sex + bmi, data = df1)
+
+  Hmisc::label(df1$sex) <- "Gender"
 
 
 
