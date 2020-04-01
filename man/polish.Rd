@@ -33,7 +33,7 @@ polish(
 Wrapper around \code{broom::tidy()} with some additional finishing touches!
 }
 \examples{
-df <- tibble::tibble(
+df1 <- tibble::tibble(
   id = letters,
   age = sample(seq(18, 39, 1), 26, replace = T),
   mile_time = sample(seq(6, 7.5, 0.1), 26, replace = T),

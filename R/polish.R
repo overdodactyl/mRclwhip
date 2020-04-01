@@ -10,7 +10,7 @@
 #' @param .header2 See \code{??mRclwhip::format_flextable} for details
 #' @param ... additional arguments passed to \code{broom::tidy()}
 #' @examples
-#' df <- tibble::tibble(
+#' df1 <- tibble::tibble(
 #'   id = letters,
 #'   age = sample(seq(18, 39, 1), 26, replace = T),
 #'   mile_time = sample(seq(6, 7.5, 0.1), 26, replace = T),
