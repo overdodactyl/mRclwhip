@@ -8,11 +8,13 @@
 
 <title>Calculate age — calc_age • mRclwhip</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -30,10 +32,11 @@
 
 
 
-<meta property="og:title" content="Calculate age — calc_age" />
 
+<meta property="og:title" content="Calculate age — calc_age" />
 <meta property="og:description" content="This function is just a convenient wrapper to calculate age using lubridate." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -92,12 +95,14 @@
       <a href="../articles/models.html">Models</a>
     </li>
     <li>
+      <a href="../articles/polish.html">Polish</a>
+    </li>
+    <li>
       <a href="../articles/word_formatting.html">Word Formatting</a>
     </li>
   </ul>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
@@ -118,13 +123,11 @@
     </div>
 
     <div class="ref-description">
-    
     <p>This function is just a convenient wrapper to calculate age using lubridate.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>calc_age</span>(<span class='no'>dob</span>, <span class='kw'>ref_date</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Sys.time'>Sys.Date</a></span>())</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -137,26 +140,25 @@
       <td><p>Ending date or datetime</p></td>
     </tr>
     </table>
-    
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>calc_age</span>(<span class='kw'>dob</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"1974-03-14"</span>))</div><div class='output co'>#&gt; [1] 45.67671</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'>calc_age</span>(<span class='kw'>dob</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"1974-03-14"</span>))</div><div class='output co'>#&gt; [1] 46.08219</div><div class='input'>
 <span class='no'>birth_days</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sample'>sample</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/seq'>seq</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"1999/01/01"</span>), <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000/01/01"</span>), <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"day"</span>), <span class='fl'>5</span>)
 <span class='no'>follow_ups</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>dob</span> <span class='kw'>=</span> <span class='no'>birth_days</span>, <span class='kw'>last_checkup</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Sys.time'>Sys.Date</a></span>())
 
 <span class='no'>follow_ups</span> <span class='kw'>%&gt;%</span>
   <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>age_last_fu</span> <span class='kw'>=</span> <span class='fu'>calc_age</span>(<span class='no'>dob</span>, <span class='no'>last_checkup</span>))</div><div class='output co'>#&gt;          dob last_checkup age_last_fu
-#&gt; 1 1999-06-22   2019-11-05    20.38630
-#&gt; 2 1999-03-04   2019-11-05    20.68767
-#&gt; 3 1999-12-24   2019-11-05    19.87945
-#&gt; 4 1999-02-16   2019-11-05    20.73151
-#&gt; 5 1999-07-20   2019-11-05    20.30959</div></pre>
+#&gt; 1 1999-06-22   2020-04-01    20.79178
+#&gt; 2 1999-03-04   2020-04-01    21.09315
+#&gt; 3 1999-12-24   2020-04-01    20.28493
+#&gt; 4 1999-02-16   2020-04-01    21.13699
+#&gt; 5 1999-07-20   2020-04-01    20.71507</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
       <li><a href="#examples">Examples</a></li>
     </ul>
 

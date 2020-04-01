@@ -11,7 +11,7 @@ pct_change(start, final, perc = FALSE)
 
 \item{final}{A value or vector of values}
 
-\item{perc}{A logical indicating whether or not to format the value as XX%}
+\item{perc}{A logical indicating whether or not to format the value with a percent symbol}
 }
 \description{
 Calculate the percent change between two values or vectors of values

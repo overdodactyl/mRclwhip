@@ -8,11 +8,13 @@
 
 <title>Function reference • mRclwhip</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -30,7 +32,9 @@
 
 
 
+
 <meta property="og:title" content="Function reference" />
+
 
 
 
@@ -89,12 +93,14 @@
       <a href="../articles/models.html">Models</a>
     </li>
     <li>
+      <a href="../articles/polish.html">Polish</a>
+    </li>
+    <li>
       <a href="../articles/word_formatting.html">Word Formatting</a>
     </li>
   </ul>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
@@ -237,26 +243,12 @@
           <p><code><a href="in_row_headers.html">in_row_headers()</a></code> </p>
         </td>
         <td><p>Add header rows within a column for values that repeat.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-models" class="hasAnchor"><a href="#section-models" class="anchor"></a>Models</h2>
-          <p class="section-desc"><p>Additional model outputs</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="modelsum_cox.html">modelsum_cox()</a></code> </p>
-        </td>
-        <td><p>Univariable Cox regression Table</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="modelsum_km.html">modelsum_km()</a></code> </p>
+          <p><code><a href="polish.html">polish()</a></code> </p>
         </td>
-        <td><p>Kaplan-Meier Table</p></td>
+        <td><p>Tidy and put the finishing touches on a model output</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -268,15 +260,39 @@
       <tr>
         
         <td>
-          <p><code><a href="new_project.html">new_project()</a></code> </p>
+          <p><code><a href="add_footer.html">add_footer()</a></code> </p>
         </td>
-        <td><p>Create a new R project and accompanying folders</p></td>
+        <td><p>Add a formatted footer to a flextable</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="knitthis.html">knitthis()</a></code> </p>
+          <p><code><a href="add_table.html">add_table()</a></code> </p>
         </td>
-        <td><p>Knit the Rmd file that is currently open</p></td>
+        <td><p>Add tables and titles to a word document</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="add_total_column.html">add_total_column()</a></code> </p>
+        </td>
+        <td><p>Add a total column to a tbl</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="all_identical.html">all_identical()</a></code> <code><a href="all_identical.html">any_identical()</a></code> </p>
+        </td>
+        <td><p>Check if any number of values are identical</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="all_unique.html">all_unique()</a></code> </p>
+        </td>
+        <td><p>Check if all values are unique</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="calc_age.html">calc_age()</a></code> </p>
+        </td>
+        <td><p>Calculate age</p></td>
       </tr><tr>
         
         <td>
@@ -286,9 +302,177 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="coalesce_rows.html">coalesce_rows()</a></code> </p>
+        </td>
+        <td><p>Coalesce columns of a data frame</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="countpct.html">countpct()</a></code> </p>
+        </td>
+        <td><p>Summarize two columns as N (%)</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="days.html">days</a></code> </p>
+        </td>
+        <td><p>Days of week</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="days.abb.html">days.abb</a></code> </p>
+        </td>
+        <td><p>Three-letter abbreviations for days of week</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="format_flextable.html">format_flextable()</a></code> </p>
+        </td>
+        <td><p>Standard options used to format a flextable</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="format_modelsum.html">format_modelsum()</a></code> </p>
+        </td>
+        <td><p>Generate a formatted flextable from a modelsum object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="format_p.html">format_p()</a></code> </p>
+        </td>
+        <td><p>Format a column of p-values</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="format_pbold.html">format_pbold()</a></code> </p>
+        </td>
+        <td><p>Format a column</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="format_tableby.html">format_tableby()</a></code> </p>
+        </td>
+        <td><p>Generate a formatted flextable from a tableby object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="in_row_headers.html">in_row_headers()</a></code> </p>
+        </td>
+        <td><p>Add header rows within a column for values that repeat.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="knitthis.html">knitthis()</a></code> </p>
+        </td>
+        <td><p>Knit the Rmd file that is currently open</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="label_df.html">label_df()</a></code> </p>
+        </td>
+        <td><p>Create a data frame with columns for variables and variable labels</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="mRclwhip.html">mRclwhip</a></code> </p>
+        </td>
+        <td><p>Whippin' Data Into Shape at Mayo Clinic</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="missing_tbl.html">missing_tbl()</a></code> </p>
+        </td>
+        <td><p>Generate a table of "missingness"</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="modelsum_cox.html">modelsum_cox()</a></code> </p>
+        </td>
+        <td><p>Univariable Cox regression Table</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="modelsum_km.html">modelsum_km()</a></code> </p>
+        </td>
+        <td><p>Kaplan-Meier Table</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="move_to_last.html">move_to_last()</a></code> <code><a href="move_to_last.html">move_to_first()</a></code> </p>
+        </td>
+        <td><p>Move a column to the beginning or end of a data frame</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="non_na.html">non_na()</a></code> </p>
+        </td>
+        <td><p>Return indexes of values that are (or are not) NA</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="nrange.html">nrange()</a></code> </p>
+        </td>
+        <td><p>Summarize three columns as N (low, high)</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pct_change.html">pct_change()</a></code> </p>
+        </td>
+        <td><p>Calculate the percent change between two values or vectors of values</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="percent_to_numeric.html">percent_to_numeric()</a></code> </p>
+        </td>
+        <td><p>Convert a formatted percent to a numeric</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="polish.html">polish()</a></code> </p>
+        </td>
+        <td><p>Tidy and put the finishing touches on a model output</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="rm_all.html">rm_all()</a></code> </p>
         </td>
         <td><p>Remove all data from the global environment</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sort_by_label.html">sort_by_label()</a></code> </p>
+        </td>
+        <td><p>Sort the columns of a data frame by it's labels (alphabetically)</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="split_nrange.html">split_nrange()</a></code> </p>
+        </td>
+        <td><p>Split character vector of N (low, high) into three columns</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="str_to_firstup.html">str_to_firstup()</a></code> </p>
+        </td>
+        <td><p>Capitalize the first character of a string</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="surv_time.html">surv_time()</a></code> </p>
+        </td>
+        <td><p>Calculate time variable for survival analysis</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="unfill_vec.html">unfill_vec()</a></code> </p>
+        </td>
+        <td><p>Unfill a vector</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vec_to_regex.html">vec_to_regex()</a></code> </p>
+        </td>
+        <td><p>Convert a vector to a regular expression</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -351,6 +535,32 @@
           <p><code><a href="label_df.html">label_df()</a></code> </p>
         </td>
         <td><p>Create a data frame with columns for variables and variable labels</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pct_change.html">pct_change()</a></code> </p>
+        </td>
+        <td><p>Calculate the percent change between two values or vectors of values</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-models" class="hasAnchor"><a href="#section-models" class="anchor"></a>Models</h2>
+          <p class="section-desc"><p>Additional model outputs</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="modelsum_cox.html">modelsum_cox()</a></code> </p>
+        </td>
+        <td><p>Univariable Cox regression Table</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="modelsum_km.html">modelsum_km()</a></code> </p>
+        </td>
+        <td><p>Kaplan-Meier Table</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -381,9 +591,9 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#section-format-output">Format Output</a></li>
       <li><a href="#section-format-contents">Format Contents</a></li>
-      <li><a href="#section-models">Models</a></li>
       <li><a href="#section-project-management">Project Management</a></li>
       <li><a href="#section-other">Other</a></li>
+      <li><a href="#section-models">Models</a></li>
       <li><a href="#section-data">Data</a></li>
     </ul>
   </div>

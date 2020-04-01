@@ -23,6 +23,7 @@ reference:
   - split_nrange
   - percent_to_numeric
   - in_row_headers
+  - polish
 - title: Project Management
   desc:  Helpful function to set up and maintain a new project
   contents:
@@ -42,6 +43,7 @@ reference:
   - non_na
   - vec_to_regex
   - label_df
+  - pct_change
 - title: Models
   desc: Additional model outputs
   contents:

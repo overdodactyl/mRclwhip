@@ -4,5 +4,6 @@ pkgdown_sha: ~
 articles:
   format_output: format_output.html
   models: models.html
+  polish: polish.html
   word_formatting: word_formatting.html
 

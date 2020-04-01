@@ -2,7 +2,7 @@
 #'
 #' @param start A value or vector of values
 #' @param final A value or vector of values
-#' @param perc A logical indicating whether or not to format the value as XX%
+#' @param perc A logical indicating whether or not to format the value with a percent symbol
 #' @export
 #' @examples
 #' tibble(
