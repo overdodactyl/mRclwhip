@@ -13,8 +13,7 @@ LazyData: true
 VignetteBuilder:
   knitr
 Depends: 
-    R (>= 3.4),
-    scales
+    R (>= 3.4)
 Suggests:
     knitr,
     testthat (>= 2.1.0),
