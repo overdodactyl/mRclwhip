@@ -20,23 +20,27 @@
 #'
 #' lm_res <- lm(mile_time ~ age + gender + country, data = df1)
 #'
-#' lm_res %>% polish(.labels = c(age = "Age", gender = "Gender", country = "Country of origin"), .header1 = list(values = c("", "Estimate (95% CI)")))
+#' lm_res %>%
+#'   polish(
+#'     .labels = c(age = "Age", gender = "Gender", country = "Country of origin"),
+#'     .header1 = list(values = c("", "Estimate (95% CI)"))
+#'     )
 #' @export
 
 polish <- function(x, .labels = NULL, .conf_int = TRUE, .flextable = TRUE, .header1 = NULL, .header2 = NULL, ...) {
 
-  if(is.null(.labels)) {
-
-    tryCatch({
-      df1 <- eval(x$call$data)
-    },
-    error = function(e) {
-      usethis::ui_stop(
-        "The data frame {x$call$data} does not exist in the environment anymore. Please pass in labels or recreate {x$call$data}."
-        )
-      }
+  tryCatch({
+    df1 <- eval(x$call$data)
+  },
+  error = function(e) {
+    usethis::ui_stop(
+      "The data frame {x$call$data} does not exist in the environment anymore. Please pass in labels or recreate {x$call$data}."
     )
+  }
+  )
 
+
+  if(is.null(.labels)) {
 
     labs <- mRclwhip::label_df(eval(x$call$data)) %>%
       dplyr::mutate(

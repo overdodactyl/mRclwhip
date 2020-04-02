@@ -43,5 +43,9 @@ df1 <- tibble::tibble(
 
 lm_res <- lm(mile_time ~ age + gender + country, data = df1)
 
-lm_res \%>\% polish(.labels = c(age = "Age", gender = "Gender", country = "Country of origin"), .header1 = list(values = c("", "Estimate (95\% CI)")))
+lm_res \%>\%
+  polish(
+    .labels = c(age = "Age", gender = "Gender", country = "Country of origin"),
+    .header1 = list(values = c("", "Estimate (95\% CI)"))
+    )
 }
