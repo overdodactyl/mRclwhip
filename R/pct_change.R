@@ -7,7 +7,7 @@
 #' @examples
 #' tibble::tibble(
 #'  start = seq(0.1, 1.1, 0.1),
-#'  final = sample(seq(0.1, 1, 0.1), 11, replace = T)
+#'  final = sample(seq(0.1, 1, 0.1), 11, replace = TRUE)
 #'  ) %>%
 #' dplyr::mutate(pct_diff = pct_change(start, final))
 
