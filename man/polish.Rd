@@ -35,10 +35,10 @@ Wrapper around \code{broom::tidy()} with some additional finishing touches!
 \examples{
 df1 <- tibble::tibble(
   id = letters,
-  age = sample(seq(18, 39, 1), 26, replace = T),
-  mile_time = sample(seq(6, 7.5, 0.1), 26, replace = T),
-  gender = sample(c("Male", "Female"), 26, replace = T),
-  country = sample(c("USA", "Canada", "Africa", "England"), 26, replace = T)
+  age = sample(seq(18, 39, 1), 26, replace = TRUE),
+  mile_time = sample(seq(6, 7.5, 0.1), 26, replace = TRUE),
+  gender = sample(c("Male", "Female"), 26, replace = TRUE),
+  country = sample(c("USA", "Canada", "Africa", "England"), 26, replace = TRUE)
 )
 
 lm_res <- lm(mile_time ~ age + gender + country, data = df1)

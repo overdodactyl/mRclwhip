@@ -12,10 +12,10 @@
 #' @examples
 #' df1 <- tibble::tibble(
 #'   id = letters,
-#'   age = sample(seq(18, 39, 1), 26, replace = T),
-#'   mile_time = sample(seq(6, 7.5, 0.1), 26, replace = T),
-#'   gender = sample(c("Male", "Female"), 26, replace = T),
-#'   country = sample(c("USA", "Canada", "Africa", "England"), 26, replace = T)
+#'   age = sample(seq(18, 39, 1), 26, replace = TRUE),
+#'   mile_time = sample(seq(6, 7.5, 0.1), 26, replace = TRUE),
+#'   gender = sample(c("Male", "Female"), 26, replace = TRUE),
+#'   country = sample(c("USA", "Canada", "Africa", "England"), 26, replace = TRUE)
 #' )
 #'
 #' lm_res <- lm(mile_time ~ age + gender + country, data = df1)
@@ -79,7 +79,7 @@ polish <- function(x, .labels = NULL, .conf_int = TRUE, .flextable = TRUE, .head
 
   res <- x %>%
     broom::tidy(conf.int = .conf_int, ...) %>%
-    dplyr::filter(stringr::str_detect(term, "(Intercept)", negate = T)) %>%
+    dplyr::filter(stringr::str_detect(term, "(Intercept)", negate = TRUE)) %>%
     dplyr::mutate(
       variable = stringr::str_extract(term, mRclwhip::vec_to_regex(labs[["variable"]])),
       level = stringr::str_remove(term, variable),
