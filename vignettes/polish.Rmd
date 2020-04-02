@@ -9,12 +9,7 @@ vignette: >
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(fig.width = 8, fig.height = 4, dpi = 600)
-library(tidyverse)
-library(officedown)
-library(arsenal)
-library(survival)
 library(mRclwhip)
-source("../R/polish.R")
 ```
 
 The idea behind ```mRclwhip::polish()``` is to create a more 'complete product' than what is returned
@@ -37,6 +32,7 @@ The example at the end will provide further clarification.
 
 ### Example using ```coxph()```
 ```{r}
+mockstudy <- arsenal::mockstudy
 coxph_res <- survival::coxph(survival::Surv(fu.time, fu.stat) ~ race + sex + bmi, data = mockstudy)
 
 Hmisc::label(mockstudy$sex) <- "Gender"
