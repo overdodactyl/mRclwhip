@@ -27,6 +27,7 @@ format_p <- function(pval, na_string = "-", empty_string = "-", sig = NA) {
   if (is.character(p)) {
     if (gsub(" ", "", p, fixed = TRUE) == "<0.001") p = 0
     else if (p == "") p = return(empty_string)
+    else if (p == ">0.99") p <- ">0.99"
     else {
       p <- tryCatch({
         as.numeric(p)
@@ -40,8 +41,8 @@ format_p <- function(pval, na_string = "-", empty_string = "-", sig = NA) {
     usethis::ui_stop("P-value greater than one.")
   }
 
-  if (p < 0.001) res <- "<0.001"
-  else if (p > .99) {
+  if (p < 0.001 & !is.character(p)) res <- "<0.001"
+  else if (p > .99 | p == ">0.99") {
     res <- "1.00"
     if (p != 1) {
       usethis::ui_warn("P-value of {usethis::ui_value(p)} rounded to 1.00")
