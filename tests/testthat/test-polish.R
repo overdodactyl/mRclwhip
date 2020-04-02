@@ -1,15 +1,14 @@
 test_that("No errors produced from using polish", {
+
   df1 <- arsenal::mockstudy
 
   coxph_res <- survival::coxph(survival::Surv(fu.time, fu.stat) ~ race + sex + bmi, data = df1)
 
   Hmisc::label(df1$sex) <- "Gender"
 
-
-
   expect_error(
     coxph_res %>%
-      polish(
+      mRclwhip::polish(
         .header1 = list(values = c("", "HR (95% CI)")),
         exponentiate = T
       ),

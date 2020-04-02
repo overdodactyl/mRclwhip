@@ -30,7 +30,7 @@
 polish <- function(x, .labels = NULL, .conf_int = TRUE, .flextable = TRUE, .header1 = NULL, .header2 = NULL, ...) {
 
   tryCatch({
-    df1 <- eval(x$call$data)
+    int_df <- eval(x$call$data, envir = parent.frame())
   },
   error = function(e) {
     usethis::ui_stop(
@@ -42,7 +42,7 @@ polish <- function(x, .labels = NULL, .conf_int = TRUE, .flextable = TRUE, .head
 
   if(is.null(.labels)) {
 
-    labs <- mRclwhip::label_df(eval(x$call$data)) %>%
+    labs <- mRclwhip::label_df(int_df) %>%
       dplyr::mutate(
         label = dplyr::case_when(
           label == "" ~ variable,
@@ -68,10 +68,10 @@ polish <- function(x, .labels = NULL, .conf_int = TRUE, .flextable = TRUE, .head
   }
 
   ## Create a data frame with the # of levels for each factor var
-  factor_vars <- eval(x$call$data) %>%
+  factor_vars <- int_df %>%
     dplyr::select_if(function(x) is.factor(x) | is.character(x)) %>%
     names()
-  numlevs <- purrr::map_dbl(factor_vars, ~length(levels(as.factor(eval(x$call$data)[[.x]]))))
+  numlevs <- purrr::map_dbl(factor_vars, ~length(levels(as.factor(int_df[[.x]]))))
   levs_df <- tibble::tibble(
     variable = factor_vars,
     numlevs = numlevs
