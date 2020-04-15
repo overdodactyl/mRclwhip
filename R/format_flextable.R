@@ -17,6 +17,13 @@ format_flextable <- function(data, center_cols = NULL, left_cols = NULL, right_c
                              pbold = NA, psig = 0.05) {
 
   if (is.data.frame(data)) {
+
+    if (is.null(header1)) {
+      names(data) <- label_df(data) %>%
+        dplyr::mutate(res = ifelse(label == "", variable, label)) %>%
+        dplyr::pull(res)
+    }
+
     ft <- flextable::flextable(data)
   } else {
     ft <- data
