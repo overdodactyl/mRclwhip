@@ -14,7 +14,7 @@ format_p <- function(pval, na_string = "-", empty_string = "-", sig = NA) {
   res <- c()
 
   for (p in pval) {
-    res <- c(res, .internal_pformater(p, na_string, empty_string, sig))
+    res <- c(res, .internal_pformatter(p, na_string, empty_string, sig))
   }
 
   res
