@@ -44,5 +44,5 @@ df <- tibble::tribble(
   "b", .801, .741, .9891
 )
 
-df \%>\% nrange(n, low, high)
+df \%>\% nrange(n, low, high, formatter = "comma")
 }

@@ -18,24 +18,33 @@
 #'   "b", .801, .741, .9891
 #' )
 #'
-#' df %>% nrange(n, low, high)
+#' df %>% nrange(n, low, high, formatter = "comma")
 #' @export
 
 nrange <- function(.data, n, low, high, accuracy = 0.01, name = "Estimate",
                    formatter = c("comma", "percent", "number") , remove = TRUE, big.mark = ",") {
 
-  if (!"scales" %in% loadedNamespaces())
-    attachNamespace("scales")
-
-  comma <- function(...) {scales::comma(...)}
-  percent <- function(...) {scales::percent(...)}
-  number <- function(...) {scales::number(...)}
+  # if (!"scales" %in% loadedNamespaces())
+  #   attachNamespace("scales")
+  #
+  # comma <- function(...) {scales::comma(...)}
+  # percent <- function(...) {scales::percent(...)}
+  # number <- function(...) {scales::number(...)}
 
   formatter <- match.arg(formatter)
-  format_func <- match.fun(formatter)
 
-  res <- .data %>%
-    mutate_at(vars({{n}}, {{low}}, {{high}}), list(~ format_func(., accuracy = accuracy, big.mark = big.mark))) %>%
+  if (formatter == "comma") {
+    res <- .data %>%
+      mutate_at(vars({{n}}, {{low}}, {{high}}), list(~ scales::comma(., accuracy = accuracy, big.mark = big.mark)))
+  } else if (formatter == "percent") {
+    res <- .data %>%
+      mutate_at(vars({{n}}, {{low}}, {{high}}), list(~ scales::percent(., accuracy = accuracy, big.mark = big.mark)))
+  } else if (formatter == "number") {
+    res <- .data %>%
+      mutate_at(vars({{n}}, {{low}}, {{high}}), list(~ scales::number(., accuracy = accuracy, big.mark = big.mark)))
+  }
+
+  res <- res %>%
     mutate({{name}} := paste0({{n}}, " (", {{low}}, ", ", {{high}}, ")"))
 
   if (remove) {

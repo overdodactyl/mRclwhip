@@ -40,5 +40,6 @@ Imports:
     utils,
     stats,
     lubridate,
-    usethis
+    usethis,
+    scales
 RoxygenNote: 7.0.2
