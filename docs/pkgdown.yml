@@ -1,9 +1,10 @@
-pandoc: 2.3.1
-pkgdown: 1.3.0
+pandoc: 2.11.3.2
+pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   format_output: format_output.html
   models: models.html
   polish: polish.html
   word_formatting: word_formatting.html
+last_built: 2021-02-07T03:20Z
 

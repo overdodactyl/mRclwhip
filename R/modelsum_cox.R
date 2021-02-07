@@ -19,7 +19,7 @@ modelsum_cox <- function(event, time, data = NA, pval = TRUE) {
 
     surv.form <- survival::Surv(time, event) ~ eval(as.name(var))
 
-    broom::tidy(survival::coxph(surv.form, data), exponentiate = T) %>%
+    broom::tidy(survival::coxph(surv.form, data), exponentiate = T, conf.int = TRUE) %>%
       dplyr::mutate(N = num) %>%
       dplyr::mutate(
         Label = lab,

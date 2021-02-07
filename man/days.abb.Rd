@@ -4,7 +4,9 @@
 \name{days.abb}
 \alias{days.abb}
 \title{Three-letter abbreviations for days of week}
-\format{A character vector of length 7.}
+\format{
+A character vector of length 7.
+}
 \usage{
 days.abb
 }

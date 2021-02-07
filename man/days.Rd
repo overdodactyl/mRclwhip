@@ -4,7 +4,9 @@
 \name{days}
 \alias{days}
 \title{Days of week}
-\format{A character vector of length 7.}
+\format{
+A character vector of length 7.
+}
 \usage{
 days
 }
