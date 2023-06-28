@@ -16,8 +16,7 @@ format_flextable(
   fontsize = 10,
   fontname = "Times New Roman",
   pbold = NA,
-  psig = 0.05,
-  table_properties = list(layout = "autofit", width = 1)
+  psig = 0.05
 )
 }
 \arguments{
@@ -39,8 +38,6 @@ second header on top.}
 \item{pbold}{(String) Name of column to bold as p-values}
 
 \item{psig}{A numeric threshold to bold p-values#' @param psig A numeric threshold to bold p-values}
-
-\item{table_properties}{A list of arguments passed to flextable::set_table_properties. NA to ignore}
 }
 \description{
 Standard options used to format a flextable

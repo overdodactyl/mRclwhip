@@ -10,12 +10,11 @@
 #' @param bold_header Bold the header column(s)?
 #' @param pbold (String) Name of column to bold as p-values
 #' @param psig A numeric threshold to bold p-values#' @param psig A numeric threshold to bold p-values
-#' @param table_properties A list of arguments passed to flextable::set_table_properties. NA to ignore
 
 format_flextable <- function(data, center_cols = NULL, left_cols = NULL, right_cols = NULL,
                              header1 = NULL, header2 = NULL, bold_header = FALSE,
                              center_num = TRUE, fontsize = 10, fontname = "Times New Roman",
-                             pbold = NA, psig = 0.05, table_properties = list(layout = "autofit", width = 1) ) {
+                             pbold = NA, psig = 0.05) {
 
   if (is.data.frame(data)) {
 
@@ -59,7 +58,7 @@ format_flextable <- function(data, center_cols = NULL, left_cols = NULL, right_c
     flextable::padding(padding.bottom = 0, part = "all") %>%
     flextable::padding(padding.left = 5, j = 1, part = "header") %>%
     flextable::valign(part = "header") %>%
-    flextable::align(j = 1, part = "all") %>%
+    flextable::align(j = 1, align = "left", part = "all") %>%
     flextable::align(j = 2:last_col, part = "all", align = "center") %>%
     flextable::height_all(height = 0)
 
@@ -86,12 +85,7 @@ format_flextable <- function(data, center_cols = NULL, left_cols = NULL, right_c
     }
   }
 
-  if (!identical(table_properties, NA)) {
-    ft <- flextable::set_table_properties(ft, layout = table_properties$layout, width = table_properties$width)
-  }
 
-  ft
-
-  # flextable::width(ft, j = 1:ncol(ft$body$dataset), width = flextable::dim_pretty(ft)$widths)
+  flextable::width(ft, j = 1:ncol(ft$body$dataset), width = flextable::dim_pretty(ft)$widths)
 
 }
